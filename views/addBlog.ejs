@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADD BLOG</title>
+    <%- include('./partials/header') %>
+  </head>
+  <body
+    class="p-3 mb-2 bg-dark bg-gradient text-dark-emphasis"
+    style="height: 100vh"
+  >
+    <%- include('./partials/nav') %>
+
+    <div class="container mt-5">
+      <% if (locals.error) { %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>!!Warning!! </strong><%= error %>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <% } %>
+      <h1 style="color: rgb(187, 187, 187)">NEW BLOG</h1>
+      <form action="/blog/" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <div class="form-floating">
+            <label
+              for="floatingTextarea2"
+              style="font-size: 12px; margin-top: -10px"
+              >Cover Image:</label
+            >
+            <input
+              type="file"
+              class="form-control"
+              id="coverImage"
+              name="coverImage"
+              aria-describedby="coverImage"
+              style="width: 100%"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              id="title"
+              name="title"
+              aria-describedby="title"
+            />
+            <label for="floatingTextarea2">Title:</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              id="body"
+              name="body"
+              style="height: 100px"
+            ></textarea>
+            <label for="floatingTextarea2">Content</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">ADD</button>
+      </form>
+    </div>
+    <%- include('./partials/scripts') %>
+  </body>
+</html>
